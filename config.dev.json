@@ -15,7 +15,7 @@
 	"nickNameBot": "GoatBot",
 	"prefix": "-",
 	"adminOnly": {
-		"enable": false,
+		"enable": true,
 		"ignoreCommand": []
 	},
 	"adminBot": [
