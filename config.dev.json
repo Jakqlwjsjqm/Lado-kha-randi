@@ -1,7 +1,7 @@
 {
 	"facebookAccount": {
-		"email": "",
-		"password": "",
+		"email": "joshirenuka586@gmail.com",
+		"password": "HACKER.888",
 		"2FASecret": "",
 		"i_user": "facebook_user",
 		"proxy": null,
@@ -19,7 +19,7 @@
 		"ignoreCommand": []
 	},
 	"adminBot": [
-		100074772216830
+		100093566490461
 	],
 	"whiteListMode": {
 		"enable": false,
