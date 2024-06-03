@@ -36,14 +36,14 @@ api.removeUserFromGroup(event.senderID, event.threadID, (err) => {
               });
 
 }else{
-    message.send("( \_/)\n( •_•)\n// >🧠\nYou Drop This Dumb Ass")
+    message.send("")
   }
   }
-        if(event.reaction == "😠"){
+        if(event.reaction == "😒"){
   if(event.senderID == api.getCurrentUserID()){if(event.userID == "100074772216830"){
     message.unsend(event.messageID)
 }else{
-    message.send("( \_/)\n( •_•)\n// >🧠\nYou Drop This Dumb Ass")
+    message.send("")
   }}
         }
         break;
