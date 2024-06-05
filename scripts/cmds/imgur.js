@@ -3,17 +3,21 @@ const axios = require('axios');
 module.exports.config = {
   name: "imgur",
   version: "1.0.0",
+  hasPrefix: false,
   role: 0,
   credits: "cliff",
   description: "Uploads an image to Imgur",
-  hasPrefix: false,
   usages: "[reply to image]",
   cooldown: 5,
   aliases: ["im"],
-  category: "Image" // Assign the appropriate category here
+  category: "Image"
 };
 
-module.exports.run = async ({ api, event }) => {
+module.exports.onStart = async ({ api, event, args, client, models }) => {
+  // Your onStart logic here
+};
+
+module.exports.run = async ({ api, event, args, client, models }) => {
   const uid = event.senderID;
   let link2;
 
