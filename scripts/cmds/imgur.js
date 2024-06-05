@@ -4,13 +4,13 @@ module.exports.config = {
   name: "imgur",
   version: "1.0.0",
   role: 0,
-  aurthor: "cliff",
+  credits: "cliff",
   description: "Uploads an image to Imgur",
-  category: "box chat",
   hasPrefix: false,
   usages: "[reply to image]",
   cooldown: 5,
-  aliases: ["im"]
+  aliases: ["im"],
+  category: "Image" // Assign the appropriate category here
 };
 
 module.exports.run = async ({ api, event }) => {
