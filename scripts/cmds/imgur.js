@@ -1,36 +1,43 @@
 const axios = require('axios');
 
-module.exports.config = {
-  name: "imgur",
-  version: "1.0.0",
-  hasPrefix: true,
-  role: 0,
-  author: "miraibot", // -converted by obito to goatbot
-  description: "Uploads an image to Imgur",
-  usages: "[reply to image]",
-  cooldown: 5,
-  aliases: ["im"],
-  category: "Image"
-};
+module.exports = {
+  config: {
+    name: "imgur",
+    aliases: ["Imgur"],
+    version: "1.0",
+    author: "Rishad",
+    countDown: 5,
+    role: 0,
+    shortDescription: {
+      en: "Upload image or video to Imgur"
+    },
+    longDescription: {
+      en: "Upload image or video to Imgur by replying to photo or video"
+    },
+    category: "tools",
+    guide: {
+      en: ""
+    }
+  },
 
-module.exports.run = async ({ api, event, args }) => {
-  const uid = event.senderID;
-  let link2;
+  onStart: async function ({ api, event }) {
+    const link = event.messageReply?.attachments[0]?.url;
+    if (!link) {
+      return api.sendMessage('Please reply to an image or video.', event.threadID, event.messageID);
+    }
 
-  if (event.type === "message_reply" && event.messageReply.attachments.length > 0) {
-    link2 = event.messageReply.attachments[0].url;
-  } else if (event.attachments.length > 0) {
-    link2 = event.attachments[0].url;
-  } else {
-    return api.sendMessage('No attachment detected. Please reply to an image.', event.threadID, event.messageID);
-  }
+    try {
+      const res = await axios.get(`https://for-devs.onrender.com/api/imgur?apikey=api1&link=${encodeURIComponent(link)}`);
+      const uploaded = res.data.uploaded;
 
-  try {
-    const res = await axios.get(`http://158.101.198.227:8609/imgur2?link=${encodeURIComponent(link2)}`);
-    const link = res.data.uploaded.image;
-    return api.sendMessage(`Here is the Imgur link for the image you provided:\n\n${link}`, event.threadID, event.messageID);
-  } catch (error) {
-    console.error("Error uploading image to Imgur:", error);
-    return api.sendMessage("An error occurred while uploading the image to Imgur.", event.threadID, event.messageID);
+      if (uploaded.status === "success") {
+        return api.sendMessage(uploaded.url, event.threadID, event.messageID);
+      } else {
+        return api.sendMessage('Failed to upload image or video to Imgur.', event.threadID, event.messageID);
+      }
+    } catch (error) {
+      console.error(error);
+      return api.sendMessage('Failed to upload image or video to Imgur.', event.threadID, event.messageID);
+    }
   }
 };
