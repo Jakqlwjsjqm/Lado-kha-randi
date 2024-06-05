@@ -3,9 +3,9 @@ const axios = require('axios');
 module.exports.config = {
   name: "imgur",
   version: "1.0.0",
-  hasPrefix: false,
+  hasPrefix: true,
   role: 0,
-  credits: "cliff",
+  aurthor: "miraibot//-converted by obito to goatbot",
   description: "Uploads an image to Imgur",
   usages: "[reply to image]",
   cooldown: 5,
