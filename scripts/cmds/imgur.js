@@ -1,33 +1,35 @@
-const axios = require('axios');
+ const axios = require('axios');
 
-module.exports = {
+module.exports.config = {
   name: "imgur",
-  aurthor: "Miraibot//converted to goatbot by obito"
-  description: "Uploads images to Imgur",
-  async execute(message) {
-    const uid = message.author.id;
-    let link;
+  version: "1.0.0",
+  role: 0,
+  credits: "cliff//-converted by obito to goatbot",
+  description: "Uploads an image to Imgur",
+  hasPrefix: false,
+  usages: "[reply to image]",
+  cooldown: 5,
+  aliases: ["im"]
+};
 
-    if (message.reference && message.reference.messageID) {
-      const referencedMessage = await message.channel.messages.fetch(message.reference.messageID);
-      if (referencedMessage.attachments.size > 0) {
-        link = referencedMessage.attachments.first().url;
-      } else {
-        return message.channel.send('No attachment detected in the referenced message. Please reply to an image.');
-      }
-    } else if (message.attachments.size > 0) {
-      link = message.attachments.first().url;
-    } else {
-      return message.channel.send('No attachment detected. Please attach an image or reply to an image.');
-    }
+module.exports.run = async ({ api, event }) => {
+  const uid = event.senderID;
+  let link2;
 
-    try {
-      const res = await axios.get(`http://158.101.198.227:8609/imgur2?link=${encodeURIComponent(link)}`);
-      const uploadedLink = res.data.uploaded.image;
-      return message.channel.send(`Here is the Imgur link for the image you provided:\n\n${uploadedLink}`);
-    } catch (error) {
-      console.error("Error uploading image to Imgur:", error);
-      return message.channel.send("An error occurred while uploading the image to Imgur.");
-    }
-  },
+  if (event.type === "message_reply" && event.messageReply.attachments.length > 0) {
+    link2 = event.messageReply.attachments[0].url;
+  } else if (event.attachments.length > 0) {
+    link2 = event.attachments[0].url;
+  } else {
+    return api.sendMessage('No attachment detected. Please reply to an image.', event.threadID, event.messageID);
+  }
+
+  try {
+    const res = await axios.get(`http://158.101.198.227:8609/imgur2?link=${encodeURIComponent(link2)}`);
+    const link = res.data.uploaded.image;
+    return api.sendMessage(`Here is the Imgur link for the image you provided:\n\n${link}`, event.threadID, event.messageID);
+  } catch (error) {
+    console.error("Error uploading image to Imgur:", error);
+    return api.sendMessage("An error occurred while uploading the image to Imgur.", event.threadID, event.messageID);
+  }
 };
