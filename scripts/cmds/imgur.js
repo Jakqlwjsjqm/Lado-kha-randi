@@ -5,7 +5,7 @@ module.exports.config = {
   version: "1.0.0",
   hasPrefix: true,
   role: 0,
-  aurthor: "miraibot",//-converted by obito to goatbot
+  author: "miraibot", // -converted by obito to goatbot
   description: "Uploads an image to Imgur",
   usages: "[reply to image]",
   cooldown: 5,
@@ -13,11 +13,7 @@ module.exports.config = {
   category: "Image"
 };
 
-module.exports.onStart = async ({ api, event, args, client, models }) => {
-  // Your onStart logic here
-};
-
-module.exports.run = async ({ api, event, args, client, models }) => {
+module.exports.run = async ({ api, event, args }) => {
   const uid = event.senderID;
   let link2;
 
