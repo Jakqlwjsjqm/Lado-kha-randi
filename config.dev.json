@@ -113,7 +113,7 @@
 		}
 	},
 	"hideNotiMessage": {
-		"commandNotFound": false,
+		"commandNotFound": true,
 		"adminOnly": true,
 		"threadBanned": false,
 		"userBanned": false,
