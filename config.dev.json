@@ -13,13 +13,13 @@
 	"language": "en",
 	"notesLanguage": "change to your language with ISO 639-1 code, available languages: vi (Vietnamese), en (English)",
 	"nickNameBot": "Goatbot",
-	"prefix": "//",
+	"prefix": "%%",
 	"adminOnly": {
 		"enable": true,
 		"ignoreCommand": []
 	},
 	"adminBot": [
-		100094335527121
+		100074772216830
 	],
 	"whiteListMode": {
 		"enable": false,
