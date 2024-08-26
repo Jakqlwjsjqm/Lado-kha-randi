@@ -13,13 +13,13 @@
 	"language": "en",
 	"notesLanguage": "change to your language with ISO 639-1 code, available languages: vi (Vietnamese), en (English)",
 	"nickNameBot": "Goatbot",
-	"prefix": "%%",
+	"prefix": "-",
 	"adminOnly": {
 		"enable": true,
 		"ignoreCommand": []
 	},
 	"adminBot": [
-		100074772216830
+		
 	],
 	"whiteListMode": {
 		"enable": false,
@@ -42,7 +42,7 @@
 	"timeZone": "Asia/Ho_Chi_Minh",
 	"credentials": {
 		"gmailAccount": {
-			"email": "cliffbotbeluga@gmail.com",
+			"email": "ladokha@gmail.com",
 			"clientId": "335951889803-q0sqvpqjire12vl0c1drqpvq6trqe7qi.apps.googleusercontent.com",
 			"clientSecret": "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",
 			"refreshToken": "1//04vKSsirtbMjRCgYIARAAGAQSNwF-L9Ir45Y2gJy6rg7wvfCbzF5fTFQxOhV83N6jQC-N5n6S-rNnEUgujiuWu4OvrLEbmELMcSI",
